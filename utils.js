@@ -30,61 +30,61 @@
 */
 
 Utils = {
-	isIE: (navigator.userAgent.indexOf('MSIE') != -1),
-	
-	// ----------
-	bind: function(element, eventName, handler) {
-	    if(this.isIE)
-	        element.attachEvent("on" + eventName, handler);
-	    else
-	        element.addEventListener(eventName, handler, true);
-	}, 	
-	
-	// ----------
-	unbind: function(element, eventName, handler) {
-	    if(this.isIE)
-	        element.detachEvent("on" + eventName, handler);
-	    else
-	        element.removeEventListener(eventName, handler, true);
-	}, 	
-	
-	// ----------
-	event: function(event) {
-		return (this.isIE ? window.event : event);
-	}, 	
-	
-	// ----------
-	position: function(event) {
-		return {x: event.clientX, y: event.clientY};
-	}, 	
-	
-	// ----------
-	preventDefault: function(event) {    
-	    if(this.isIE) {
-	        event.cancelBubble = true;
-	        event.returnValue = false;
-	    } else
-	        event.preventDefault();    
-	},
+  isIE: (navigator.userAgent.indexOf('MSIE') != -1),
+  
+  // ----------
+  bind: function(element, eventName, handler) {
+    if(this.isIE)
+      element.attachEvent("on" + eventName, handler);
+    else
+      element.addEventListener(eventName, handler, true);
+  },  
+  
+  // ----------
+  unbind: function(element, eventName, handler) {
+    if(this.isIE)
+      element.detachEvent("on" + eventName, handler);
+    else
+      element.removeEventListener(eventName, handler, true);
+  },  
+  
+  // ----------
+  event: function(event) {
+    return (this.isIE ? window.event : event);
+  },  
+  
+  // ----------
+  position: function(event) {
+    return {x: event.clientX, y: event.clientY};
+  },  
+  
+  // ----------
+  preventDefault: function(event) {    
+    if(this.isIE) {
+      event.cancelBubble = true;
+      event.returnValue = false;
+    } else
+      event.preventDefault();    
+  },
 
-	//------------------------------------------------------------------------------
-	windowSize: function() {
-		var w = 0;
-		var h = 0;
-	
-		if(!window.innerWidth) { //IE
-			if(!(document.documentElement.clientWidth == 0)) { //strict mode
-				w = document.documentElement.clientWidth;
-				h = document.documentElement.clientHeight;
-			} else { //quirks mode
-				w = document.body.clientWidth;
-				h = document.body.clientHeight;
-			}
-		} else { //w3c
-			w = window.innerWidth;
-			h = window.innerHeight;
-		}
-		
-		return {x:w, y:h};
-	}
+  //------------------------------------------------------------------------------
+  windowSize: function() {
+    var w = 0;
+    var h = 0;
+  
+    if(!window.innerWidth) { //IE
+      if(!(document.documentElement.clientWidth == 0)) { //strict mode
+        w = document.documentElement.clientWidth;
+        h = document.documentElement.clientHeight;
+      } else { //quirks mode
+        w = document.body.clientWidth;
+        h = document.body.clientHeight;
+      }
+    } else { //w3c
+      w = window.innerWidth;
+      h = window.innerHeight;
+    }
+    
+    return {x:w, y:h};
+  }
 };
