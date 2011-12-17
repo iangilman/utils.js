@@ -1,6 +1,6 @@
 /*
-* Utils.js 
-* A simple utility library. 
+* Utils.js
+* A simple utility library.
 *
 * * * * * *
 * LICENSE
@@ -31,47 +31,47 @@
 
 Utils = {
   isIE: (navigator.userAgent.indexOf('MSIE') != -1),
-  
+
   // ----------
   bind: function(element, eventName, handler) {
     if(this.isIE)
       element.attachEvent("on" + eventName, handler);
     else
       element.addEventListener(eventName, handler, true);
-  },  
-  
+  },
+
   // ----------
   unbind: function(element, eventName, handler) {
     if(this.isIE)
       element.detachEvent("on" + eventName, handler);
     else
       element.removeEventListener(eventName, handler, true);
-  },  
-  
+  },
+
   // ----------
   event: function(event) {
     return (this.isIE ? window.event : event);
-  },  
-  
+  },
+
   // ----------
   position: function(event) {
     return {x: event.clientX, y: event.clientY};
-  },  
-  
+  },
+
   // ----------
-  preventDefault: function(event) {    
+  preventDefault: function(event) {
     if(this.isIE) {
       event.cancelBubble = true;
       event.returnValue = false;
     } else
-      event.preventDefault();    
+      event.preventDefault();
   },
 
   //------------------------------------------------------------------------------
   windowSize: function() {
     var w = 0;
     var h = 0;
-  
+
     if(!window.innerWidth) { //IE
       if(!(document.documentElement.clientWidth == 0)) { //strict mode
         w = document.documentElement.clientWidth;
@@ -84,7 +84,7 @@ Utils = {
       w = window.innerWidth;
       h = window.innerHeight;
     }
-    
+
     return {x:w, y:h};
   }
 };
